@@ -1,0 +1,55 @@
+# Ansible kafka role
+
+Ansible role for install kafka with KRaft mode on Debian and RedHat distributions. KRaft is marked production ready in version 3.3.1 so this role should be used to deploy kafka version equal or greater than 3.3.1.
+
+Tested with ubuntu 22.04 and AlmaLinux 8, but should work with most distros, especially when not using this role to install dependencies. See `kafka_install_dependencies` variable.
+
+## Requirements
+
+* x86_64 arch on servers that will run kafka
+* ansible 2.15 -- did not test with other versions, but probably would work with anything equal or greater than version 2.10
+* Java installed -- version 8(deprecated), 11 or 17. -- `apt install openjdk-17-jre-headless` or `dnf install java-17-openjdk-headless`
+* For ubuntu setfacl from `acl` package -- `apt install acl`
+
+## Role Variables
+
+Required:
+
+  * `kafka_node_id` -- kafka node id. Must be integer or zero and unique per host.
+
+Optional:
+
+  * `kafka_topics` -- list of kafka topics with topic settings.
+  * `kafka_install_dependencies` -- should java be installed and also `acl` for Debian based distributions. For now it can be installed using role setting this to `true`.
+  * `kafka_config_path` -- if unset config will be deployed to kafka home. Should not be set to default config location as subsequent role runs will not be idempotent and will cause kafka restart.
+
+## Dependencies
+
+None with `kafka_install_dependencies=true`. For other cases look at the requirements section.
+
+## Example Playbook
+
+    - hosts: servers
+      roles:
+         - role: dragomirr.kafka
+           kafka_heap_size: 2G
+           kafka_install_dependencies: true
+           kafka_topics:
+             - name: topic1
+             - name: topic2
+               replication_factor: 3
+               partitions: 10
+
+## License
+
+GPL3
+
+## Testing
+
+Testing is done using [molecule](https://molecule.readthedocs.io/) with [virtualbox](https://www.virtualbox.org/) and [vagrant](https://www.vagrantup.com/)
+
+There are 3 scenarios:
+
+  * Default scenario using 1 instance.
+  * Cluster scenario using 3 instances with both controller and broker role for all instances.
+  * Cluster combined scenario using 6 instances where 3 are in broker and controller role and 3 in only broker role.
