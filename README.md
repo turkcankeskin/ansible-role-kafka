@@ -29,15 +29,21 @@ None with `kafka_install_dependencies=true`. For other cases look at the require
 
 ## Example Playbook
 
+Install role using ansible-galaxy `ansible-galaxy install dragomirr.kafka`
+
+
     - hosts: servers
       roles:
          - role: dragomirr.kafka
+           # setting kafka_node_id in play is only valid if you have 1 kafka node
+           # if you have multiple kafka nodes you need to set unique kafka_node_id for each node
+           kafka_node_id: 0
            kafka_heap_size: 2G
            kafka_install_dependencies: true
            kafka_topics:
              - name: topic1
              - name: topic2
-               replication_factor: 3
+               replication_factor: 1
                partitions: 10
 
 ## License
