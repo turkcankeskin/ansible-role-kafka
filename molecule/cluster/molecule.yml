@@ -38,5 +38,8 @@ provisioner:
       kafkaansiblemoleculenode3:
         kafka_node_id: 3
         kafka_node_ip: 192.168.123.4
+    group_vars:
+      all:
+        kafka_install_dependencies: true
 verifier:
   name: ansible

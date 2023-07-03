@@ -83,5 +83,8 @@ provisioner:
         kafka_node_ip: 192.168.124.7
         kafka_node_roles:
           - broker
+    group_vars:
+      all:
+        kafka_install_dependencies: true
 verifier:
   name: ansible

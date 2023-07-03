@@ -14,5 +14,6 @@ provisioner:
     host_vars:
       kafkaansiblemoleculenode:
         kafka_node_id: 1
+        kafka_install_dependencies: true
 verifier:
   name: ansible

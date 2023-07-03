@@ -4,6 +4,8 @@ Ansible role for install kafka with KRaft mode on Debian and RedHat distribution
 
 Tested with ubuntu 22.04 and AlmaLinux 8, but should work with most distros, especially when not using this role to install dependencies. See `kafka_install_dependencies` variable.
 
+For more info check [changelog](./CHANGELOG.md).
+
 ## Requirements
 
 * x86_64 arch on servers that will run kafka

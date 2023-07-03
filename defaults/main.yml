@@ -2,15 +2,15 @@
 kafka_user: kafka
 kafka_user_group: kafka
 kafka_home: /opt/kafka
-kafka_version: 3.4.0
+kafka_version: 3.5.0
 kafka_scala_version: 2.13
 kafka_java_version: 17
 kafka_install_dependencies: false
 kafka_checksum: >
-  sha512:2C405149 C065627C E2125088 DFCCE0A4
-  DC23AEBA A72C1157 736D5829 CB5CBEF2 73C0915E
-  C55D2D8B A38E5E05 24F0720F 43E07D7D 677439CD
-  2AC7BEA6 18CAA65B
+  sha512:7B79BD08 44DB683C 06C34919 55BB183D
+  48A47FA4 639D2E24 1B9F4FF4 060C4B70 814DAC7D
+  96BEA87D FFCA0C8A E038278C 4FABF68D 4EA11942
+  28D67D9C 3B1D247C
 kafka_download_directory: /opt
 kafka_log_directory: /var/log/kafka # this is actual kafka service log desitnation. not to be confused with kafka logs
 kafka_replication_factor: 1
