@@ -2,19 +2,21 @@
 kafka_user: kafka
 kafka_user_group: kafka
 kafka_home: /opt/kafka
-kafka_version: 3.5.0
+kafka_version: 3.5.1
 kafka_scala_version: 2.13
 kafka_java_version: 17
 kafka_install_dependencies: false
 kafka_checksum: >
-  sha512:7B79BD08 44DB683C 06C34919 55BB183D
-  48A47FA4 639D2E24 1B9F4FF4 060C4B70 814DAC7D
-  96BEA87D FFCA0C8A E038278C 4FABF68D 4EA11942
-  28D67D9C 3B1D247C
+  sha512:B6CEB010 A5FE1791 843CBC53 D34D3599
+  3E97E03F 9518344B 4B5BDF71 46D0A4E8 66CD2D47
+  60CAB319 D8B3323A 5BF53037 A78FED88 C9384381
+  AEA2CD03 66877763
 kafka_download_directory: /opt
 kafka_log_directory: /var/log/kafka # this is actual kafka service log desitnation. not to be confused with kafka logs
 kafka_replication_factor: 1
 kafka_heap_size: 1G
+kafka_additional_config: {}
+#  message.max.bytes: 1000
 
 kafka_topics: []
 # - name: topic1
