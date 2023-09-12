@@ -4,6 +4,7 @@
     that:
       - kafka_node_id is defined
       - kafka_node_id | int or kafka_node_id == "0"
+      - kafka_opts | type_debug == "list" or kafka_opts | type_debug == "AnsibleUnicode"
 
 - name: Update apt cache
   become: true
@@ -97,12 +98,24 @@
     state: directory
     mode: "0755"
 
-- name: Add kafka environment file
+- name: Configure kafka heap size
   become: true
-  ansible.builtin.copy:
-    content: KAFKA_HEAP_OPTS="-Xmx{{ kafka_heap_size }} -Xms{{ kafka_heap_size }}"
+  ansible.builtin.lineinfile:
+    regexp: "^KAFKA_HEAP_OPTS"
+    line: KAFKA_HEAP_OPTS="-Xmx{{ kafka_heap_size }} -Xms{{ kafka_heap_size }}"
     dest: /etc/sysconfig/kafka
     mode: "0644"
+    create: true
+  notify: Restart Kafka
+
+- name: Configure kafka opts
+  become: true
+  ansible.builtin.lineinfile:
+    regexp: "^KAFKA_OPTS"
+    line: KAFKA_OPTS="{{ kafka__opts }}"
+    dest: /etc/sysconfig/kafka
+    mode: "0644"
+    create: true
   notify: Restart Kafka
 
 - name: Install Kafka service definition

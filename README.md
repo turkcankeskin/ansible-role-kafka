@@ -25,6 +25,7 @@ Optional:
   * `kafka_install_dependencies` -- should java be installed and also `acl` for Debian based distributions. For now it can be installed using role setting this to `true`.
   * `kafka_config_path` -- if unset config will be deployed to kafka home. Should not be set to default config location as subsequent role runs will not be idempotent and will cause kafka restart.
   * `kafka_additional_config` -- specify map of config parameters that are not defined by role.
+  * `kafka_opts` -- specify list or string of kafka options to run at startup. From this variable `KAFKA_OPTS` environment variable will be created.
 
 ## Dependencies
 
@@ -51,6 +52,9 @@ Install role using ansible-galaxy `ansible-galaxy install dragomirr.kafka`
           # adding config that is not defined by role
           kafka_additional_config:
             message.max.bytes: 10000
+          # adding kafka startup options
+          kafka_opts:
+            - -XX:NewSize=256m
 
 ## License
 

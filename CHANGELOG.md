@@ -1,3 +1,7 @@
+### 0.4.0 (September 12, 2023)
+
+* Added `kafka_opts` variable which later creates `KAFKA_OPTS` environment variable for specifying additional kafka options.
+
 ### 0.3.0 (August 10, 2023)
 
 * Added additional variable which can be used to provide config parameters that are not defined in role.
