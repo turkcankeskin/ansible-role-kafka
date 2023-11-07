@@ -1,3 +1,7 @@
+### 0.5.0 (November 07, 2023)
+
+* Updated default kafka version to 3.6.0 -- [Release log](https://kafka.apache.org/blog#apache_kafka_360_release_announcement)
+
 ### 0.4.0 (September 12, 2023)
 
 * Added `kafka_opts` variable which later creates `KAFKA_OPTS` environment variable for specifying additional kafka options.
