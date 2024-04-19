@@ -1,3 +1,8 @@
+### 0.7.0 (April 18, 2024)
+
+* Updated default kafka version to 3.7.0 -- [Release notes](https://kafka.apache.org/blog#apache_kafka_370_release_announcement)
+* Remove `kafka_checksum` variable and get checksum from kafka download page.
+
 ### 0.6.0 (December 19, 2023)
 
 * Updated default kafka version to 3.6.1 -- [Release notes](https://downloads.apache.org/kafka/3.6.1/RELEASE_NOTES.html)

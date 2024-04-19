@@ -2,14 +2,15 @@
 kafka_user: kafka
 kafka_user_group: kafka
 kafka_home: /opt/kafka
-kafka_version: 3.6.1
+kafka_version: 3.7.0
 kafka_scala_version: 2.13
 kafka_java_version: 17
 kafka_install_dependencies: false
-kafka_checksum: >
-  sha512:1F063CD6 7463DD3B B5A5E06E 7A1C2278 DB84BFC8
-  36A634FA C7C9A005 DE66A42A C00B32F5 E9BBDD22 086605F7
-  3659EFD4 CE5BD118 5196B02A 743BE089 8DAAC55D
+# if kafka_checksum is defined role will use that value instead getting checksum from kafka downloads page
+# kafka_checksum: >
+#   sha512: B8679283 A2D8DAB8 6E7C636B 2C688FE9 D9E64AC4
+#   37241F65 EF7A1733 F4D26A2B D415EEFA 04F09F19 11373BCD
+#   2A5DBC38 38C76347 F6865642 5C09202C D290CE91
 kafka_download_directory: /opt
 kafka_log_directory: /var/log/kafka # this is actual kafka service log desitnation. not to be confused with kafka logs
 kafka_replication_factor: 1

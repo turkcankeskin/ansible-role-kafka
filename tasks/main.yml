@@ -45,6 +45,24 @@
     home: "{{ kafka_home }}"
     createhome: false
 
+- name: Get checksum
+  ansible.builtin.uri:
+    url: https://downloads.apache.org/kafka/{{ kafka_version }}/kafka_{{ kafka_scala_version }}-{{ kafka_version }}.tgz.sha512
+    return_content: true
+  retries: 3
+  delay: 3
+  register: kafka__reg_checksum
+  run_once: true
+  when: kafka_checksum is not defined
+
+- name: Set checksum
+  ansible.builtin.set_fact:
+    kafka_checksum: "{{ kafka__reg_checksum.content \
+      | replace('\n', '') \
+      | regex_replace('\\s{2,}', ' ') \
+      | replace('kafka_' + kafka_scala_version | string + '-' + kafka_version | string + '.tgz: ', 'sha512:') }}"
+  when: kafka_checksum is not defined
+
 - name: Download Kafka
   become: true
   ansible.builtin.get_url:
