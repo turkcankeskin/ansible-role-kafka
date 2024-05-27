@@ -1,3 +1,7 @@
+### 0.8.0 (May 27, 2024)
+
+* Fix issue with ordering of servers. It could happen that for some tasks where `run_once` is used when action is required to run on controller to be actually run on broker only if such instance is present.
+
 ### 0.7.0 (April 18, 2024)
 
 * Updated default kafka version to 3.7.0 -- [Release notes](https://kafka.apache.org/blog#apache_kafka_370_release_announcement)

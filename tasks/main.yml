@@ -187,7 +187,7 @@
   ansible.builtin.stat:
     path: "{{ kafka__uuid_file }}"
   register: kafka__reg_check_uuid_file
-  when: inventory_hostname in groups["kafka__group_controller_nodes"]
+  delegate_to: "{{ groups['kafka__group_controller_nodes'] | first }}"
   run_once: true
 
 - name: Create cluster uuid
@@ -197,6 +197,7 @@
     cmd: "{{ kafka_home }}/bin/kafka-storage.sh random-uuid"
   register: kafka__reg_storage_random_uuid
   changed_when: true
+  delegate_to: "{{ groups['kafka__group_controller_nodes'] | first }}"
   when: not kafka__reg_check_uuid_file.stat.exists
   run_once: true
 
@@ -209,15 +210,21 @@
     mode: "0444"
   when: not kafka__reg_check_uuid_file.stat.exists and inventory_hostname in groups["kafka__group_controller_nodes"]
 
-- name: Set cluster uuid
+- name: Get cluster uuid
   become: true
   become_user: "{{ kafka_user }}"
   ansible.builtin.command:
     cmd: cat {{ kafka__uuid_file }}
-  when: inventory_hostname in groups["kafka__group_controller_nodes"]
+  delegate_to: "{{ groups['kafka__group_controller_nodes'] | first }}"
   register: kafka__reg_cluster_uuid
   changed_when: false
   run_once: true
+
+- name: Set cluster uuid
+  become: true
+  become_user: "{{ kafka_user }}"
+  ansible.builtin.set_fact:
+    kafka_cluster_id: "{{ kafka__reg_cluster_uuid.stdout }}"
 
 - name: Format kafka log directory
   become: true
@@ -226,7 +233,7 @@
     cmd: >
       {{ kafka_home }}/bin/kafka-storage.sh format
       --config {{ kafka__config_path }}
-      --cluster-id {{ kafka__reg_cluster_uuid.stdout }}
+      --cluster-id {{ kafka_cluster_id }}
   changed_when: true
   when: not kafka__reg_check_if_formatted.results[0].stat.exists
 
@@ -263,7 +270,7 @@
   register: kafka__reg_topics
   changed_when: false
   check_mode: false
-  delegate_to: "{{ groups.kafka__group_broker_nodes[0] }}"
+  delegate_to: "{{ groups['kafka__group_broker_nodes'] | first }}"
   run_once: true
 
 - name: Create kafka topics
@@ -275,6 +282,7 @@
   when: item.name not in kafka__reg_topics.stdout_lines
   loop: "{{ kafka_topics }}"
   changed_when: true
+  delegate_to: "{{ groups['kafka__group_broker_nodes'] | first }}"
   run_once: true
   loop_control:
     label: "{{ item.name }}"
