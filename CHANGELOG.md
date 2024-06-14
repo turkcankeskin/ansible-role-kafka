@@ -1,3 +1,7 @@
+### 0.9.0 (Jun 14, 2024)
+
+* Fix issue with checking if `kafka_node_id` is integer.
+
 ### 0.8.0 (May 27, 2024)
 
 * Fix issue with ordering of servers. It could happen that for some tasks where `run_once` is used when action is required to run on controller to be actually run on broker only if such instance is present.
