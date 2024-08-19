@@ -1,3 +1,7 @@
+### 0.10.0 (August 19, 2024)
+
+* Update default kafka version to 3.8.0 -- [Release notes](https://kafka.apache.org/blog#apache_kafka_380_release_announcement)
+
 ### 0.9.0 (Jun 14, 2024)
 
 * Fix issue with checking if `kafka_node_id` is integer.
