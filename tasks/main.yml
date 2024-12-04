@@ -279,6 +279,9 @@
       {{ kafka_home }}/bin/kafka-topics.sh --create --bootstrap-server localhost:9092 --topic {{ item.name }}
       --partitions {{ item.partitions | default(1) }}
       --replication-factor {{ item.replication_factor | default(1) }}
+      {% for k,v in item.config | dictsort %}
+      --config {{ k | replace("_","." )}}={{ v }}
+      {% endfor %}
   when: item.name not in kafka__reg_topics.stdout_lines
   loop: "{{ kafka_topics }}"
   changed_when: true
