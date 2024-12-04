@@ -1,3 +1,7 @@
+### 0.12.0 (December 04, 2024)
+
+* Update default kafka version to 3.9.0 -- [Release notes](https://downloads.apache.org/kafka/3.9.0/RELEASE_NOTES.html)
+
 ### 0.11.1 (December 04, 2024)
 
 * Fixed issue where topic creation would fail when no config is specified.

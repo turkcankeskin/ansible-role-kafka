@@ -69,3 +69,16 @@ There are 3 scenarios:
   * Default scenario using 1 instance.
   * Cluster scenario using 3 instances with both controller and broker role for all instances.
   * Cluster combined scenario using 6 instances where 3 are in broker and controller role and 3 in only broker role.
+
+Run tests:
+
+```bash
+# install molecule
+pip install molecule
+
+# install vagrant plugin
+pip install molecule-plugins[vagrant]
+
+# run test
+molecule test
+```
