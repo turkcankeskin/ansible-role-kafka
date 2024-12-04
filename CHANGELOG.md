@@ -1,3 +1,7 @@
+### 0.11.0 (December 04, 2024)
+
+* Added support for topic configuration on create -- [PR link](https://github.com/dragomirr/ansible-role-kafka/pull/6)
+
 ### 0.10.0 (August 19, 2024)
 
 * Update default kafka version to 3.8.0 -- [Release notes](https://kafka.apache.org/blog#apache_kafka_380_release_announcement)
