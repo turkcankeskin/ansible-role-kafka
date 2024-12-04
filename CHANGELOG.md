@@ -1,3 +1,7 @@
+### 0.11.1 (December 04, 2024)
+
+* Fixed issue where topic creation would fail when no config is specified.
+
 ### 0.11.0 (December 04, 2024)
 
 * Added support for topic configuration on create -- [PR link](https://github.com/dragomirr/ansible-role-kafka/pull/6)
