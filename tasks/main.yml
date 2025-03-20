@@ -3,7 +3,6 @@
   ansible.builtin.assert:
     that:
       - kafka_node_id is defined
-      - kafka_node_id | type_debug == "int"
       - kafka_opts | type_debug == "list" or kafka_opts | type_debug == "AnsibleUnicode"
 
 - name: Update apt cache

@@ -1,3 +1,8 @@
+### 0.13.0 (March 20, 2025)
+
+* Updated default kafka version to 4.0.0 -- [Release announcement](https://kafka.apache.org/blog#apache_kafka_400_release_announcement)
+* Removed int assertion.
+
 ### 0.12.0 (December 04, 2024)
 
 * Update default kafka version to 3.9.0 -- [Release notes](https://downloads.apache.org/kafka/3.9.0/RELEASE_NOTES.html)
