@@ -1,3 +1,7 @@
+### 0.14.0 (June 24, 2025)
+
+* Uncommented security protocol map. Resolved error `cannot start since No security protocol defined for listener CONTROLLER`
+
 ### 0.13.0 (March 20, 2025)
 
 * Updated default kafka version to 4.0.0 -- [Release announcement](https://kafka.apache.org/blog#apache_kafka_400_release_announcement)
